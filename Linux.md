@@ -361,9 +361,9 @@ sudo systemctl start ssh
 sudo systemctl status ssh
 ifconfig
 ssh user@12.34.23.153                # Use IP address shown by ifconfig
+# After running the `ssh` command, enter the user's password to connect.
 ```
 
-After running the `ssh` command, enter the user's password to connect.
 
 ---
 
