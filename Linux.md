@@ -1,4 +1,11 @@
+
 # Linux Notes
+
+📘 These are my personal Linux notes – helpful commands, usage tips, and examples.  
+✍️ Created by **Ankit Kumar**  
+🗒️ For learning and quick reference.
+
+---
 
 ## JSLinux – Virtual Linux on Browser  
 🔗 [JSLinux (RISC-V)](https://bellard.org/jslinux/vm.html?cpu=riscv64&url=fedora33-riscv.cfg&mem=256)
@@ -7,10 +14,10 @@
 
 ## Basic Commands
 
-- `clear` or `Ctrl + L` – Clear the terminal screen
-- `cd` – Move to the root directory (if used alone)
-- `pwd` – Print working directory
-- `whoami` – Show current user
+- `clear` or `Ctrl + L` – Clear the terminal screen  
+- `cd` – Move to the root directory (if used alone)  
+- `pwd` – Print working directory  
+- `whoami` – Show current user  
 - `date` – Show current date and time  
   - `date +%D`, `date +%T`, etc.
 
@@ -37,123 +44,344 @@
 
 ## File Reading & Editing
 
-- `cat a.txt` – Read file
-- `less a.txt` – Scroll (`/n`, `?n`), use `Shift+G`, `Shift+P`, `q` to quit
-- `more a.txt` – Read file, use `Space` to move next page
-- `touch newFile.txt` – Create new file
-- `rm newFile.txt` – Delete file
-- `rm a b c temp temp2` – Remove multiple files
+```bash
+cat a.txt              # Read file
+less a.txt             # View file with search and scroll (q to quit)
+more a.txt             # View file, space to scroll
+touch newFile.txt      # Create new file
+rm newFile.txt         # Delete file
+rm a b c temp temp2    # Remove multiple files
+```
 
-### File Editing
+### Editing with Editors
 
-- `vi text.txt`
-  - `i` – Insert mode
-  - `Esc` – Exit insert mode
-  - `:wq` – Save and quit
-  - `:wq file` – Save and create if file doesn't exist
-- `nano text.txt` – Easier editor with additional features
+```bash
+vi text.txt
+  i             # Insert mode
+  Esc           # Exit insert mode
+  :wq           # Save and quit
+  :wq file      # Save and create if file doesn't exist
+
+nano text.txt   # Simpler editor with features
+```
 
 ---
 
 ## Folder Operations
 
-- `mkdir fname` – Create folder
-- `rmdir fname` – Delete empty folder
-- `rm -rf fname` – Delete folder (forcefully)
+```bash
+mkdir fname      # Create folder
+rmdir fname      # Delete empty folder
+rm -rf fname     # Force delete folder
+```
 
 ---
 
 ## Directory Navigation
 
-- `cd a`
-- `cd a/axy/folder`
-- `cd ..` – Move up one level
-- `cd ../..` – Move up two levels
+```bash
+cd a
+cd a/axy/folder
+cd ..
+cd ../..
+```
 
-**Absolute path**: Starts from root  
-**Relative path**: Starts from current directory
+- **Absolute path**: Starts from root (`/`)
+- **Relative path**: From current directory
 
 ---
 
 ## Copy and Move
 
-- `cp file newFolder/newFile` – Copy to other folder
-- `cp ../filename .` – Copy from previous folder to current (`.` = current)
-- `cp file newfile` – Copy and rename
-- `cp file ../newfile` – Copy to parent folder
-
-- `mv file newFolder` – Move file to folder
-- `mv a b` – Rename file or folder
-
----
-
-## Viewing File Lines
-
-- `head file.txt` – Top 10 lines
-- `head -n 5 file.txt` – Top 5 lines
-
-- `tail file.txt` – Last 10 lines
-- `tail -n 5 file.txt` – Last 5 lines
+```bash
+cp file newFolder/newFile     # Copy to another folder
+cp ../filename .              # Copy from previous to current
+cp file newfile               # Copy and rename
+mv file newFolder             # Move file
+mv a b                        # Rename file or folder
+```
 
 ---
 
-## Piping & Filtering
+## Head & Tail
 
-- `|` – Pipe to combine commands
-- `uniq file` – Filter unique lines (case-sensitive)
-- `sort file.txt`
-- `sort -r file.txt` – Reverse sort
-- `sort file | uniq` – Sort and remove duplicates
+```bash
+head file.txt
+head -n 5 file.txt
+
+tail file.txt
+tail -n 5 file.txt
+```
+
+---
+
+## Pipes & Uniq & Sort
+
+```bash
+command1 | command2           # Pipe
+uniq file                     # Show unique lines (case sensitive)
+sort file.txt
+sort -r file.txt              # Reverse
+sort file | uniq              # Sort and remove duplicates
+```
 
 ---
 
 ## File Splitting
 
-- `split -l 3 file` – Split file into parts, 3 lines each
+```bash
+split -l 3 file               # Split file into 3-line parts
+```
 
 ---
 
-## Grep – Searching
+## grep & egrep
 
-- `grep "word" file` – Search word in file
-- `grep "word" file1 file2 file3` – Search in multiple files
-- `egrep "word|b|Bold" temp` – OR condition with multiple words
-- `grep -i -e "a" -e "b" temp.txt` – Ignore case, multiple patterns
+```bash
+grep "word" file
+grep "word" file1 file2 file3
+egrep "word|b|Bold" temp
+grep -i -e "a" -e "b" temp.txt
+```
 
 ---
 
 ## Wildcards
 
-- `ls a*` – Files starting with 'a'
-- `ls *a` – Files ending with 'a'
-- `ls *a*` – Files containing 'a'
-- `ls a*r` – Files starting with 'a' and ending with 'r'
+```bash
+ls a*       # Starts with a
+ls *a       # Ends with a
+ls *a*      # Contains a
+ls a*r      # Starts with a, ends with r
+```
 
 ---
 
-## Batch File Creation
+## File Batching & Shuffling
 
-- `touch newFile{1..10}` – Create newFile1 to newFile10
-
----
-
-## Miscellaneous
-
-- `shuf file` – Shuffle lines in file
-- `wc -l file` – Count lines in file
+```bash
+touch newFile{1..10}   # Create newFile1 to newFile10
+shuf file              # Shuffle file lines
+wc -l file             # Count file lines
+```
 
 ---
 
-## File Comparison
+## Compare Files
 
-- `cmp fileA fileB` – Compare files, only shows first difference
-- `diff fileA fileB` – Show differences
-- `diff -u fileA fileB` – Unified diff
+```bash
+cmp fileA fileB        # Compare files
+diff fileA fileB
+diff -u fileA fileB
+```
 
 ---
 
-## File Search
+## Find Command
 
-- `find . -name fileName`
-- `find .. -name fileName`
-- `find root/temp/bin/ -name fileName`
+```bash
+find . -name fileName
+find .. -name fileName
+find root/temp/bin/ -name fileName
+```
+
+---
+
+## 🔐 sudo — Superuser Do
+
+```bash
+# Use sudo to gain elevated privileges
+sudo -i                  # Become root temporarily
+sudo apt install mlocate
+sudo yum install mlocate
+sudo updatedb
+sudo updatedb --prunepaths="/mnt /lost+found /media"
+locate fileName
+```
+
+---
+
+## 📦 Package Managers
+
+```bash
+# APT
+sudo apt update
+sudo apt upgrade
+sudo apt install nginx
+sudo apt remove nginx
+sudo apt search apache
+
+# DNF/YUM
+dnf list installed
+dnf list installed | grep java
+dnf list available
+```
+
+---
+
+## 🕘 Command History
+
+```bash
+history
+history | grep mkdir
+```
+
+---
+
+## 📖 Help & Info
+
+```bash
+help
+ls --help
+man ls
+which ls
+which mkdir
+```
+
+---
+
+## 🧮 Tools
+
+```bash
+bc              # Calculator
+cal             # Calendar
+cal 2025
+uptime          # System uptime
+```
+
+---
+
+## 📹 Terminal Recording
+
+```bash
+script          # Start recording
+Ctrl+D          # Stop recording
+```
+
+---
+
+## ⚡ Aliases
+
+```bash
+alias a="ls -ltr"
+alias -p
+unalias a
+```
+
+---
+
+## 📦 File Compression
+
+```bash
+# Files
+gzip -k file
+gunzip file
+gzip -d file
+
+zip new.gz fileA fileB
+unzip -l new.gz
+unzip new.gz
+
+# Folders
+tar -czf temp.gz temp
+tar -xzf temp.gz
+```
+
+---
+
+## 🌐 Network & API
+
+```bash
+wget url
+wget -O python https://www.python.org/ftp/python/3.13.5/python-3.13.5-amd64.exe
+
+curl url
+curl http://numbersapi.com/random
+```
+
+---
+
+## 📦 Installed Packages
+
+```bash
+rpm -qa | grep appName
+```
+
+---
+
+## 🧪 Environment & CSV
+
+```bash
+printenv                        # Show env variables
+awk -F, '{print $2}' file.csv  # Print column
+awk -F, '{print $NF}' file.csv
+awk -F, '{print $1, $2}' file.csv
+```
+
+---
+
+## 🧱 Change File Size
+
+```bash
+truncate -s 50M filename
+```
+
+---
+
+## 🔄 Switch Users
+
+```bash
+su newUsername
+```
+
+---
+
+## 👤 User Management
+
+| Task                      | Command                                 |
+| ------------------------- | --------------------------------------- |
+| Create user (interactive) | `sudo adduser username`                 |
+| Create user (quick)       | `sudo useradd -m -s /bin/bash username` |
+| Set password              | `sudo passwd username`                  |
+| Add user to sudo group    | `sudo usermod -aG sudo username`        |
+| Delete user               | `sudo deluser username`                 |
+| Delete user + home folder | `sudo deluser --remove-home username`   |
+
+```bash
+su username                          # Switch to another user
+```
+
+---
+
+## 🔌 Networking & SSH
+
+```bash
+sudo apt install net-tools
+sudo apt install openssh-server
+sudo systemctl start ssh
+sudo systemctl status ssh
+ifconfig
+ssh user@12.34.23.153                # Use IP address shown by ifconfig
+```
+
+After running the `ssh` command, enter the user's password to connect.
+
+---
+
+## 👥 Find Users on Linux
+
+```bash
+who                                  # Show currently logged in users
+cd /etc
+less passwd                          # View user list from passwd file
+/Administrator_Username              # Search for a specific username
+# Press 'q' to quit
+```
+
+---
+
+## 📤 Transfer Files from Your System to Linux
+
+```bash
+scp file user@hostname:/home/user/foldername
+```
