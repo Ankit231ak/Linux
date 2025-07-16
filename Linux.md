@@ -347,9 +347,8 @@ su newUsername
 | Delete user               | `sudo deluser username`                 |
 | Delete user + home folder | `sudo deluser --remove-home username`   |
 
-```bash
-su username                          # Switch to another user
-```
+
+
 
 ---
 
