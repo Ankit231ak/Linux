@@ -410,7 +410,6 @@ scp file user@hostname:/home/user/foldername
 ```
 
 
-
 ## 🔐 File Permissions & Ownership
 
 ### Permission Types:
