@@ -349,6 +349,30 @@ su newUsername
 
 
 
+---
+
+## 👥 User and Group Management
+
+### Create a New Group:
+```bash
+groupadd group_name
+```
+
+### View All Groups:
+```bash
+cat /etc/group
+```
+
+### Check User ID:
+```bash
+id user_name
+```
+
+### Delete a User or Group:
+```bash
+sudo userdel user_name
+sudo groupdel group_name
+```
 
 ---
 
@@ -384,3 +408,185 @@ less passwd                          # View user list from passwd file
 ```bash
 scp file user@hostname:/home/user/foldername
 ```
+
+
+
+## 🔐 File Permissions & Ownership
+
+### Permission Types:
+- `r` : Read  
+- `w` : Write  
+- `x` : Execute  
+
+### Permission Levels:
+- `a` : All (user, group, others)  
+- `u` : User  
+- `g` : Group  
+- `o` : Others  
+
+### Modify File Permissions:
+```bash
+chmod a+rwx file      # Grant all permissions
+chmod a-rwx file      # Remove all permissions
+chown user file       # Change file owner
+chgrp group file      # Change group owner
+```
+
+---
+
+## 🧠 Memory & CPU Info
+
+### Check Free RAM Space:
+```bash
+free
+free -h     # Human-readable (MB/GB)
+free -th    # Total summary
+```
+
+### Check CPU and Memory Usage:
+```bash
+top
+```
+
+### Check Folder Size:
+```bash
+du -h folder_name
+```
+
+### Check Disk Space:
+```bash
+df -h
+df -h folder_name
+```
+
+---
+
+## 🖥️ System Information
+
+### Current Hostname:
+```bash
+hostname
+```
+
+### CPU/Core/Thread Info:
+```bash
+lscpu
+```
+
+### OS Info:
+```bash
+uname -a
+```
+
+---
+
+## 🔍 Process Management
+
+### Check If a Process Is Running:
+```bash
+ps -ef
+ps -ef | grep process_name
+```
+
+### Get PID of a Process:
+```bash
+pgrep process_name
+```
+
+### Stop a Process by PID:
+```bash
+sudo kill -9 PID
+```
+
+### Stop a Process by Name:
+```bash
+pkill process_name
+```
+
+### Background Jobs:
+```bash
+sleep 10s
+jobs
+bg      # Move job to background
+fg      # Bring background job to foreground
+```
+
+---
+
+## 🔁 Reboot & Shutdown
+
+### Reboot Linux Server:
+```bash
+sudo reboot
+```
+
+### Shutdown Linux Server:
+```bash
+sudo shutdown now
+```
+
+---
+
+## ⏰ Schedule Tasks with `at`
+
+The `at` command is used to schedule **one-time tasks** at a specific time.
+
+### Install & Start `at` (if needed):
+```bash
+sudo apt install at
+sudo systemctl start atd
+sudo systemctl enable atd
+```
+
+### Schedule a Task:
+```bash
+at 2:30 PM
+# Type your command, like:
+echo "Backup done" >> backup.log
+# Press Ctrl + D to confirm
+```
+
+### Time Formats:
+- `now + 5 minutes`
+- `10am tomorrow`
+- `2pm next week`
+
+### View Scheduled Tasks:
+```bash
+atq
+```
+
+### Remove a Scheduled Task:
+```bash
+atrm <job_number>
+```
+
+### Example:
+```bash
+echo "echo Hello >> hello.txt" | at now + 1 minute
+```
+
+---
+
+## ➡️ Output Redirection
+
+### Overwrite (`>`):
+Redirects output and **overwrites** the file if it exists.
+
+```bash
+echo "Hello" > file.txt
+```
+
+### Append (`>>`):
+Redirects output and **appends** to the file if it exists.
+
+```bash
+echo "World" >> file.txt
+```
+
+---
+
+## 🙏 Thank You
+
+Thanks for reading this Linux guide.  
+Happy learning and exploring the terminal! 🧑‍💻🐧
