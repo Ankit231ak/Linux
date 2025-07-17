@@ -399,7 +399,7 @@ cd /etc
 less passwd                          # View user list from passwd file
 /Administrator_Username              # Search for a specific username
 # Press 'q' to quit
-```
+``` 
 
 ---
 
